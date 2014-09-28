@@ -1,0 +1,8 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'register' %}">Register</a>
+<a href="{% url 'profile' %}">Profile</a>
+<a href="{% url 'search' %}">Search</a>
