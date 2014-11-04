@@ -8,7 +8,7 @@ urlpatterns = patterns('',
 	url(r'^register/$', views.register, name='register'),
 	url(r'^register_submit/$', views.register_submit, name='register_submit'),
 	url(r'^profile/$', views.profile, name='profile'),
-	url(r'^profile_edit/$', views.profile_edit, name='profile_edit'),
-	url(r'^profile_submit/$', views.profile_submit, name='profile_submit'),
+	url(r'^project_edit/$', views.project_edit, name='project_edit'),
+	url(r'^project_submit/$', views.project_submit, name='project_submit'),
 	url(r'^search/$', views.search, name='search')
 )

@@ -4,11 +4,11 @@
 
 {% include "header.html" %}
 
-<p>PROFILE EDIT PAGE</p>
+<p>PROJECT EDIT PAGE</p>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form method="post" action="{% url 'profile_submit' %}">
+<form method="post" action="{% url 'project_submit' %}">
 {% csrf_token %}
 <table>
 <tr>

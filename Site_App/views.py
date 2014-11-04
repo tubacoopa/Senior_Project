@@ -5,13 +5,16 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError, DataError
-from Site_App.models import Profile
+from Site_App.models import Project
 
 def index(request):
     return render(request, 'index.html')
 	
 def login(request):
-    return render(request, 'login.html')
+	if request.user.is_authenticated():
+		return render(request, 'login.html', {'message': "Logged in as "})
+	else:
+		return render(request, 'login.html')
 	
 def register(request):
     return render(request, 'register.html')
@@ -29,27 +32,29 @@ def register_submit(request):
 	else:
 		user = authenticate(username=username, password=password)
 		auth_login(request, user)
-		return HttpResponseRedirect(reverse('profile_edit'))
+		return HttpResponseRedirect(reverse('index'))
 	
 def profile(request):
-    return render(request, 'profile.html')
+	a = Project.objects.filter(username=request.user.username)
+	return render(request, 'profile.html', {'projects':a})
 	
-def profile_edit(request):
-    return render(request, 'profile_edit.html')
+def project_edit(request):
+    return render(request, 'project_edit.html')
 	
-def profile_submit(request):
+def project_submit(request):
 	username = request.user.username
 	title = request.POST.get('title', 'empty')
 	zipcode = request.POST.get('zipcode', 'empty')
 	description = request.POST.get('descr', 'empty')
 	try:
-		profile = Profile(username=username, title=title, zipcode=zipcode, description=description)
-		profile.save()
+		project = Project(username=username, title=title, zipcode=zipcode, description=description)
+		project.save()
 	except(IntegrityError):
-		return render(request, 'profile_edit.html', {
+		return render(request, 'project_edit.html', {
             'error_message': "Error!"})
 	else:
 		return HttpResponseRedirect(reverse('index'))
 	
 def search(request):
-    return render(request, 'search.html')
+	a = Project.objects.all()
+	return render(request, 'search.html', {'projects':a})

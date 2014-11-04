@@ -6,4 +6,6 @@
 
 <p>LOGIN PAGE</p>
 
+{% if message %}<p><strong>{{ message }}{{ user.username }}</strong></p>{% endif %}
+
 {% include "navtest.html" %}
