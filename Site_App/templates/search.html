@@ -6,6 +6,18 @@
 
 <p>SEARCH PAGE</p>
 
+<form method="post" action="{% url 'search' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td><input id="id_search" maxlength="254" name="search" type="text" /></td>
+</tr>
+</table>
+
+<input type="submit" value="Search" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
 <ul>
 {% for project in projects %}
 	<div class="project">
@@ -14,6 +26,7 @@
 		<div class="project_zipcode">{{ project.zipcode }}</div>
 		<div class="project_descr">{{ project.description }}</div>
 	</div>
+	</p>
 {% endfor %}
 </ul>
 

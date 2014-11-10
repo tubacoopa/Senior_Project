@@ -5,6 +5,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError, DataError
+from django.db.models import Q
 from Site_App.models import Project
 
 def index(request):
@@ -56,5 +57,11 @@ def project_submit(request):
 		return HttpResponseRedirect(reverse('index'))
 	
 def search(request):
-	a = Project.objects.all()
-	return render(request, 'search.html', {'projects':a})
+	terms = request.POST.get('search', '')
+	if (terms == ''):
+		a = Project.objects.all()
+		return render(request, 'search.html', {'projects':a})
+	else:
+		for term in terms.split(' '):
+			a = Project.objects.filter(Q(title__icontains=term) | Q(description__icontains=term) | Q(username__icontains=term) | Q(zipcode__icontains=term))
+			return render(request, 'search.html', {'projects':a})
