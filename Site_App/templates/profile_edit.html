@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+{% include "header.html" %}
+
+<p>PROFILE EDIT PAGE</p>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form method="post" action="{% url 'profile_submit' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td><label for="id_title">Project Title:</label></td>
+    <td><input id="id_title" maxlength="254" name="title" type="text" /></td>
+</tr>
+<tr>
+    <td><label for="id_zipcode">Zip Code:</label></td>
+    <td><input id="id_zipcode" maxlength="5" name="zipcode" type="text" /></td>
+</tr>
+<tr>
+    <td><label for="id_decr">Project Description:</label></td>
+    <td><textarea id="id_descr" name="descr" cols=40 rows=4></textarea></td>
+</tr>
+</table>
+
+<input type="submit" value="Submit" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% include "navtest.html" %}
