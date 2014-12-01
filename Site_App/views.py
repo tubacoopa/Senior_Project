@@ -16,6 +16,21 @@ def login(request):
 		return render(request, 'login.html', {'message': "Logged in as "})
 	else:
 		return render(request, 'login.html')
+		
+def login_submit(request):
+	username = request.POST.get('username', 'empty')
+	password = request.POST.get('password', 'empty')
+	user = authenticate(username=username, password=password)
+	if user is not None:
+		auth_login(request, user)
+	if request.user.is_authenticated():
+		return render(request, 'login.html', {'message': "Logged in as "})
+	else:
+		return render(request, 'login.html', {'message': "Invalid login!"})
+	
+def site_logout(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('index'))	
 	
 def register(request):
     return render(request, 'register.html')
