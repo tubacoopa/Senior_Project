@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 	url(r'^register/$', views.register, name='register'),
 	url(r'^register_submit/$', views.register_submit, name='register_submit'),
 	url(r'^profile/$', views.profile, name='profile'),
+	url(r'^project/(?P<title>.*)/$', views.project, name='project'),
 	url(r'^project_edit/$', views.project_edit, name='project_edit'),
 	url(r'^project_submit/$', views.project_submit, name='project_submit'),
 	url(r'^search/$', views.search, name='search')

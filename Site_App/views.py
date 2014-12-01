@@ -54,6 +54,10 @@ def profile(request):
 	a = Project.objects.filter(username=request.user.username)
 	return render(request, 'profile.html', {'projects':a})
 	
+def project(request, title):
+	project = Project.objects.get(title=title)
+	return render(request, 'project.html', {'project':project})
+	
 def project_edit(request):
     return render(request, 'project_edit.html')
 	
