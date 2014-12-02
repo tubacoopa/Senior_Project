@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 
 {% include "header.html" %}
-
+<center>
 <p>REGISTRATION PAGE</p>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -28,5 +28,5 @@
 <input type="submit" value="Register" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
-
+</center>
 {% include "navtest.html" %}

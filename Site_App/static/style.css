@@ -3,6 +3,10 @@ html, body {
     margin-left: 0%;
     padding: 0;
 	font-family: "Georgia",Georgia,serif;
+	background-image: url("background.jpg");
+	background-position: center;
+	color: white;
+	font-size:17px;
 }
 
 .header{
@@ -21,8 +25,16 @@ html, body {
 }
 
 .header > a {
-	color: black;
+	color: white;
     display: table-cell;
     vertical-align: middle;
 	text-decoration: none;
+	color: white;
+}
+
+a:link {
+	color: white;
+}
+a:visited{
+	color: blue;
 }
