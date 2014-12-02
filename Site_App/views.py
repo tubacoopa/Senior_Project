@@ -54,6 +54,17 @@ def profile(request):
 	a = Project.objects.filter(username=request.user.username)
 	return render(request, 'profile.html', {'projects':a})
 	
+def edit(request, title):
+	project = Project.objects.get(title=title)
+	return render(request, 'edit.html', {'project':project})
+	
+def edit_submit(request, title):
+	project = Project.objects.get(title=title)
+	project.zipcode = zipcode = request.POST.get('zipcode', 'empty')
+	project.description = request.POST.get('descr', 'empty')
+	project.save()
+	return HttpResponseRedirect(reverse('index'))
+	
 def project(request, title):
 	project = Project.objects.get(title=title)
 	return render(request, 'project.html', {'project':project})
