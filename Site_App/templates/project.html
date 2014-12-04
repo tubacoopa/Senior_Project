@@ -16,7 +16,8 @@
 <p>
 
 {% if user.username == project.username %}
-<a href="{% url 'edit' title=project.title %}">Edit</a>
+<a href="{% url 'edit' title=project.title %}">Edit</a>&nbsp;&nbsp;   
+<a href="{% url 'delete' title=project.title %}">Delete</a>&nbsp;&nbsp;
 {% endif %}
 
 {% include "navtest.html" %}
