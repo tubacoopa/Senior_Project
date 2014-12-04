@@ -3,7 +3,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 
 {% include "header.html" %}
-
 <p>PROJECT EDIT PAGE</p>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -28,5 +27,4 @@
 <input type="submit" value="Submit" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
-
 {% include "navtest.html" %}
