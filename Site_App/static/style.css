@@ -23,9 +23,9 @@ body {
 	margin-right:18.75%;
 }
 
-div{
-	border-style: solid;
-	border-width: 1px;
+ul{
+	border-style: groove;
+	border-width: 5px;
 	border-color:black;
 }
 
