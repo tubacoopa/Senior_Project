@@ -2,6 +2,14 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 
+
 <div class="header">
-<a href="{% url 'index' %}">ProjectFinder™</a>
+<a href="{% url 'index' %}">ProjectFinder™</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{% url 'login' %}">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{% url 'site_logout' %}">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{% url 'register' %}">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;
+{% if not user.is_anonymous %}
+<a href="{% url 'profile' %}">Projects</a>&nbsp;&nbsp;&nbsp;&nbsp;
+{% endif %}
+<a href="{% url 'search' %}">Search</a>
 </div>
