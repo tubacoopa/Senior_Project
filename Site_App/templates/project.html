@@ -20,6 +20,7 @@
 <a href="{% url 'delete' title=project.title %}">Delete</a>&nbsp;&nbsp;
 {% elif not user.is_anonymous %}
 <a href="{% url 'join' title=project.title %}">Join</a>&nbsp;&nbsp; 
+<a href="{% url 'leave' title=project.title %}">Leave</a>&nbsp;&nbsp; 
 {% endif %}
 
 {% include "navtest.html" %}

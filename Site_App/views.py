@@ -64,6 +64,11 @@ def join(request, title):
 	join.save()
 	return HttpResponseRedirect(reverse('index'))
 	
+def leave(request, title):
+	join = Join.objects.filter(username=request.user.username, title=title)
+	join.delete()
+	return HttpResponseRedirect(reverse('index'))
+	
 def delete(request, title):
 	project = Project.objects.get(title=title)
 	project.delete()
