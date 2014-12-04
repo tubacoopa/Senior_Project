@@ -54,6 +54,11 @@ def profile(request):
 	a = Project.objects.filter(username=request.user.username)
 	return render(request, 'profile.html', {'projects':a})
 	
+def delete(request, title):
+	project = Project.objects.get(title=title)
+	project.delete()
+	return HttpResponseRedirect(reverse('index'))
+	
 def edit(request, title):
 	project = Project.objects.get(title=title)
 	return render(request, 'edit.html', {'project':project})
