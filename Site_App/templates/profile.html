@@ -12,6 +12,16 @@
 {% for project in projects %}
 	<div class="project">
 		<a href="{% url 'project' title=project.title %}"><b>{{ project.title }}</b></a>
+		<div class="project_owner">Owned by: {{ project.username }}</div>
+		<div class="project_zipcode">{{ project.zipcode }}</div>
+		<div class="project_descr">{{ project.description }}</div>
+	</div>
+	</p>
+{% endfor %}
+{% for project in joins %}
+	<div class="project">
+		<a href="{% url 'project' title=project.title %}"><b>{{ project.title }}</b></a>
+		<div class="project_owner">Owned by: {{ project.username }}</div>
 		<div class="project_zipcode">{{ project.zipcode }}</div>
 		<div class="project_descr">{{ project.description }}</div>
 	</div>

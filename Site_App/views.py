@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError, DataError
 from django.db.models import Q
-from Site_App.models import Project
+from Site_App.models import Project, Join
 
 def index(request):
     return render(request, 'index.html')
@@ -51,8 +51,18 @@ def register_submit(request):
 		return HttpResponseRedirect(reverse('index'))
 	
 def profile(request):
+	joins = Join.objects.filter(username=request.user.username)
 	a = Project.objects.filter(username=request.user.username)
-	return render(request, 'profile.html', {'projects':a})
+	list = []
+	for join in joins:
+		list.append(join.title)
+	b = Project.objects.filter(title__in=list)
+	return render(request, 'profile.html', {'projects':a, 'joins':b})
+	
+def join(request, title):
+	join = Join(username=request.user.username, title=title)
+	join.save()
+	return HttpResponseRedirect(reverse('index'))
 	
 def delete(request, title):
 	project = Project.objects.get(title=title)
